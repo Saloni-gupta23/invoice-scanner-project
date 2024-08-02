@@ -1,0 +1,79 @@
+/* General styles */
+body {
+  font-family: 'Calibri', sans-serif;
+  background-color: linear-gradient(to right, #4facfe, #00f2fe);
+  color: #333;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 80%;
+  font-size: 14px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  font-weight: bold; /* Bold all table headers */
+}
+
+.invoice-details th,
+.invoice-items th {
+  text-align: center;
+  font-weight: bold; /* Bold Invoice Details and Invoice Items headings */
+}
+
+/* Specific bolding for table cells */
+.invoice-details tbody tr th,
+.invoice-details tbody tr:first-child th, 
+.invoice-details tbody tr:nth-child(2) th, 
+.invoice-details tbody tr:nth-child(3) th, 
+.invoice-details tbody tr:nth-child(4) th, 
+.invoice-details tbody tr:nth-child(5) th {
+  font-weight: bold; /* Bold for specific invoice details headings */
+}
+
+.invoice-items thead th {
+  font-weight: bold; /* Bold Description, Quantity, Unit Price, Amount headings */
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 18px;
+}
+

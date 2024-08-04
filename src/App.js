@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
 import './App.css';
+import { db } from './firebase'; // Ensure this is correctly pointing to your Firebase config
+import { ref, set } from 'firebase/database'; // Ensure these are correctly imported
 
 function App() {
     const [data, setData] = useState(null);
@@ -41,6 +43,19 @@ function App() {
         setDisplayTable(true);
     };
 
+    const saveToFirebase = () => {
+        if (data) {
+            const dataRef = ref(db, 'invoices/' + data.invoiceNumber); // Save using Invoice Number as the key
+            set(dataRef, data)
+                .then(() => {
+                    alert('Data saved to Firebase!');
+                })
+                .catch((error) => {
+                    alert('Error saving data: ' + error.message);
+                });
+        }
+    };
+
     return (
         <div className="App">
             <h1>INVOICE SCANNER</h1>
@@ -48,10 +63,9 @@ function App() {
             <button onClick={handleUploadClick}>Upload</button>
 
             {displayTable && data && (
-                <> 
-                <h2>INVOICE DETAILS</h2>
+                <>
+                    <h2>INVOICE DETAILS</h2>
                     <table className="invoice-details">
-                        
                         <tbody>
                             <tr>
                                 <th>BILL TO</th>
@@ -76,9 +90,7 @@ function App() {
                         </tbody>
                     </table>
 
-                    {/* Invoice Items Heading */}
                     <h2>INVOICE ITEMS</h2>
-
                     <table className="invoice-items">
                         <thead>
                             <tr>
@@ -116,7 +128,7 @@ function App() {
                 </>
             )}
 
-          
+            <button onClick={saveToFirebase}>Save to Firebase</button>
         </div>
     );
 }

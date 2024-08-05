@@ -128,7 +128,7 @@ function App() {
                 </>
             )}
 
-            <button onClick={saveToFirebase}>Save to Firebase</button>
+            <button onClick={saveToFirebase}>Upload to Firebase</button>
         </div>
     );
 }
